@@ -2,6 +2,7 @@
 
 ANT 동아리 홈페이지를 작성하는 페이지입니다. Django framework를 기반으로 만들어집니다.
 
+https://www.djangoproject.com/start/
 
 ## 1) 설치
 ---------
