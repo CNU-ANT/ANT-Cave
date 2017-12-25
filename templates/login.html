@@ -1,0 +1,8 @@
+<div class="login">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <span> ID : <input type="text" name="username" placeholder="아이디" /></span>
+        <span> PW : <input type="password" name="password" placeholder="비밀번호" /></span>
+        <button type="submit">로그인</button>
+    </form>
+</div>

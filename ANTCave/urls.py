@@ -15,9 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from ant import views as ant_site
 
 urlpatterns = [
-    # url(r'^$',),
+    url(r'^$', ant_site.main_page, name='main'),
+    url(r'pedigree/', ant_site.pedigree_page, name='pedigree'),
+    url(r'greetings/', ant_site.greetings_page, name='greetings'),
+    url(r'team/', ant_site.team_page, name='team'),
+    url(r'share/', ant_site.share_info_page, name='share'),
+    url(r'ant_algo/', ant_site.ant_algo_page, name='ant_algo'),
+    url(r'compet_algo/', ant_site.competition_algo_page, name='compet_algo'),
     # url(r'download/', ),
     # url(r'',),
     url(r'^admin/', admin.site.urls),
