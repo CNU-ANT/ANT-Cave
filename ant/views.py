@@ -28,3 +28,7 @@ def ant_algo_page(request):
 
 def competition_algo_page(request):
     return render(request, 'competition_algo.html')
+
+
+def sign_up_page(request):
+    return render(request, 'signup.html')

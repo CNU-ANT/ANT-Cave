@@ -4,5 +4,10 @@
         <span> ID : <input type="text" name="username" placeholder="아이디" /></span>
         <span> PW : <input type="password" name="password" placeholder="비밀번호" /></span>
         <button type="submit">로그인</button>
+
+    </form>
+    <form method="POST" action="{% url 'sign_up' %}">
+        {% csrf_token %}
+        <button type="submit">회원가입</button>
     </form>
 </div>
