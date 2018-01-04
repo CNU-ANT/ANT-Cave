@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'share/', ant_site.share_info_page, name='share'),
     url(r'ant_algo/', ant_site.ant_algo_page, name='ant_algo'),
     url(r'compet_algo/', ant_site.competition_algo_page, name='compet_algo'),
-    # url(r'download/', ),
-    # url(r'',),
+    url(r'signup/', ant_site.sign_up_page, name='sign_up'),
+    url(r'login/', ant_site.login_page, name='login'),
     url(r'^admin/', admin.site.urls),
 ]
