@@ -29,11 +29,17 @@
     background-color: rgba(92, 92, 92, 0.9);
 }
 
-.login {
-    float:right;
-    display: block;
+
+.login-input div {
+    display: inline-block;
 }
 
-.login form {
-    display: inline;
+.login-input div input {
+    width:180px;
+    height:30px;
+}
+
+.login-input button {
+    width:60px;
+    height:60px;
 }
