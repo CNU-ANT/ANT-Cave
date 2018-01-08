@@ -13,7 +13,7 @@
     {% endif %}
 
     <form method="POST" class="login-input">
-        {% csrf_token %}
+    {% csrf_token %}
         <div>
             <input type="text" name="id" placeholder="아이디" value="{{ user_id }}" /><br>
             <input type="password" name="password" placeholder="비밀번호" />

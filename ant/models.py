@@ -1,4 +1,3 @@
-# coding=utf-8
 from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
@@ -26,6 +25,11 @@ class UserInfo(models.Model):
     level:
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_name = models.CharField(max_length=10)
     user_num = models.IntegerField()
     user_phone = models.CharField(max_length=20)
     level = models.PositiveSmallIntegerField(default=0)
+    signup_date = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.user_name.encode('utf8')

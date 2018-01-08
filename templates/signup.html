@@ -1,5 +1,26 @@
 {% extends 'base.html' %}
-
 {% block content %}
-    <h1>회원 가입</h1>
+    <h2>회원 가입</h2>
+    <form method="POST">
+    {% csrf_token %}
+    <p>아이디<input type="text" name="id" required/>
+        {% if id_err %}
+        <span>{{ id_err }}</span>
+        {% endif %}
+    </p>
+    <p>비밀번호<input type="password" name="password" required/></p>
+    <p>이메일<input type="email" name="email" required/></p> {# 이메일 인증 필요 #}
+    <p>이름<input type="text" name="name" required></p>
+    <p>학번<input type="text" name="num"></p>
+    <p>핸드폰 번호<input type="tel" name="phone"></p>
+{#    <span>재학여부</span>#}
+{#    <select name="is_attend" style="width: 200px;">#}
+{#        <option value="attend">재학</option>#}
+{#        <option value="leave">휴학</option>#}
+{#        <option value="graduate">졸업</option>#}
+{#    </select>#}
+
+    <button type="submit">회원 가입</button>
+
+    </form>
 {% endblock %}

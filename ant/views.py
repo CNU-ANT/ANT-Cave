@@ -1,5 +1,6 @@
-# coding=utf-8
-from django.contrib.auth import login, authenticate
+from datetime import datetime
+from django.contrib import messages
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
@@ -46,6 +47,12 @@ def competition_algo_page(request):
     return render(request, 'competition_algo.html')
 
 
+@login_required(login_url=LOGIN_URL)
+def user_logout(request):
+    logout(request)
+    return redirect('/')
+
+
 def find_id_page(request):
     return render(request, 'find_id.html')
 
@@ -55,11 +62,33 @@ def sign_up_page(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             try:
-                user = User.objects.get(username=form.cleaned_data['user_id'])
-                return render(request, 'signup.html',{''})
+                user = User.objects.get(username=form.cleaned_data.get('user_id'))
+                id_err = u'id가 이미 존재합니다.'
+                return render(request, 'signup.html', locals())
                 # 초기화되는 문제, 창을 띄울 것인지 화면에 글로 보일것인지의 문제
             except:
-                pass
+                user = User.objects.create_user(
+                    username=form.cleaned_data.get('id'),
+                    password=form.cleaned_data.get('password'),
+                    email=form.cleaned_data.get('email'),
+                )
+                user.save()
+                user_info = UserInfo()
+                user_info.user = user
+                user_info.user_name = form.cleaned_data.get('name')
+                user_info.user_num = form.cleaned_data.get('num')
+                user_info.user_phone = form.cleaned_data.get('phone')
+                user_info.signup_date = datetime.today().strftime('%Y %m %d')
+                user_info.save()
+                # 이메일 인증 필요
+
+                user = authenticate(
+                    username=form.cleaned_data.get('id').encode('utf8'),
+                    password=form.cleaned_data.get('password').encode('utf8'),
+                )
+                login(request, user=user)
+                # messages.add_message(request, messages.SUCCESS, '가입을 환영합니다.')
+                return redirect('/')
     else:
         form = SignupForm()
     return render(request, 'signup.html', locals())
@@ -69,13 +98,14 @@ def login_page(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            user_id = form.cleaned_data['id']
-            password = form.cleaned_data['password']
+            user_id = form.cleaned_data.get('id')
+            password = form.cleaned_data.get('password')
             try:
-                user_id = User.objects.get(username=user_id)
+                user = User.objects.get(username=user_id)
             except:
                 id_err = u'아이디가 존재하지 않습니다.'
-            user = authenticate(user_id=user_id, password=password)
+                return render(request, 'login_page.html', locals())
+            user = authenticate(username=user_id, password=password)
             if user is not None:
                 user_info = UserInfo.objects.get(user=user)
                 # if user.is_active:
