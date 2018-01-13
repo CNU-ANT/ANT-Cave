@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.http import is_safe_url
 
 from ANTCave.settings import LOGIN_URL
@@ -23,8 +23,20 @@ def pedigree_page(request):
 
 
 @login_required(login_url=LOGIN_URL)
+def pedigree_detail_page(request, pk):
+    # TODO : 입력으로 줄 모델을 만들어야 합니다.
+    return render(request, 'pedigree_detail.html', locals())
+
+
+@login_required(login_url=LOGIN_URL)
 def greetings_page(request):
     return render(request, 'greetings.html')
+
+
+@login_required(login_url=LOGIN_URL)
+def greetings_detail_page(request, pk):
+    # TODO : 입력으로 줄 모델을 만들어야 합니다.
+    return render(request, 'greetings_detail.html', locals())
 
 
 @login_required(login_url=LOGIN_URL)
@@ -33,8 +45,20 @@ def team_page(request):
 
 
 @login_required(login_url=LOGIN_URL)
+def team_detail_page(request, pk):
+    # TODO : 입력으로 줄 모델을 만들어야 합니다.
+    return render(request, 'team_detail.html', locals())
+
+
+@login_required(login_url=LOGIN_URL)
 def share_info_page(request):
     return render(request, 'share.html')
+
+
+@login_required(login_url=LOGIN_URL)
+def share_detail_page(request, pk):
+    # TODO : 입력으로 줄 모델을 만들어야 합니다.
+    return render(request, 'share_detail.html', locals())
 
 
 @login_required(login_url=LOGIN_URL)
@@ -43,8 +67,20 @@ def ant_algo_page(request):
 
 
 @login_required(login_url=LOGIN_URL)
+def ant_algo_detail_page(request, pk):
+    # TODO : 입력으로 줄 모델을 만들어야 합니다.
+    return render(request, 'ant_algo_detail.html', locals())
+
+
+@login_required(login_url=LOGIN_URL)
 def competition_algo_page(request):
     return render(request, 'competition_algo.html')
+
+
+@login_required(login_url=LOGIN_URL)
+def competition_algo_detail_page(request, pk):
+    # TODO : 입력으로 줄 모델을 만들어야 합니다.
+    return render(request, 'competition_algo_detail.html', locals())
 
 
 @login_required(login_url=LOGIN_URL)
