@@ -1,0 +1,24 @@
+/*
+
+bootstrap template - login-form Template
+Version: 1.0
+By: dave-cheon
+
+*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+* { font-family: 'Nanum Gothic', sans-serif; }
+
+.spaceLeft {
+  margin-left: 10px;
+}
+.spaceRight {
+  margin-right: 10px;
+}
+
+/* custom checkbox */
+.btn span.fa {
+	opacity: 0;
+}
+.btn.active span.fa {
+	opacity: 1;
+}
