@@ -1,24 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container login">
-    <h2>로그인</h2>
-
+<article class="container">
+        <div class="page-header">
+          <h2>로그인 <small>Login page</small></h2>
+        </div>
+    <div class="col-md-6 col-md-offset-3">
     {% if id_err %}
         <div class="err-msg">{{ id_err }}</div>
     {% endif %}
-
     {% if pw_err %}
         <div class="err-msg">{{ pw_err }}</div>
     {% endif %}
+    <div class="col-md-6 col-md-offset-3">
 
-    <form method="POST" class="login-input">
+    <form method="POST" class="form-inline">
     {% csrf_token %}
-        <div>
-            <input type="text" name="id" placeholder="아이디" value="{{ user_id }}" /><br>
-            <input type="password" name="password" placeholder="비밀번호" />
+        <div class="form-group">
+          <input type="text" class="form-control" id="login_id" placeholder="아이디 입력">
         </div>
-        <button type="submit">로그인</button>
+    </br>
+        <div class="form-group">
+
+          <input type="password" class="form-control" id="login_password" placeholder="비밀번호 입력">
+        </div>
+        <br>
+         <div class="form-group text-left">
+              <button type="submit" class="btn btn-info">로그인<i class="fa fa-check spaceLeft"></i></button>
+            </div>
 
     </form>
     <br>
@@ -26,6 +35,7 @@
         <a href="{% url 'find_id' %}">아이디 / 패스워드 찾기</a>
         <a href="{% url 'sign_up' %}">회원가입</a>
     </div>
-
+    </div>
 </div>
+</article>
 {% endblock %}
