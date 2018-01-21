@@ -34,6 +34,5 @@ urlpatterns = [
     url(r'find/$', ant_site.find_id_page, name='find_id'),
     url(r'signup/$', ant_site.sign_up_page, name='sign_up'),
     url(r'login/$', ant_site.login_page, name='login'),
-    url(r'confirm_id/$', ant_site.confirm_id, name='confirm_id'),
     url(r'^admin/', admin.site.urls),
 ]

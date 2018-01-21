@@ -7,10 +7,6 @@ class LoginForm(forms.Form):
     password = forms.CharField(required=True)
 
 
-class IdForm(forms.Form):
-    id = forms.CharField(max_length=20, required=True)
-
-
 class SignupForm(forms.Form):
     id = forms.CharField(
         max_length=20,
