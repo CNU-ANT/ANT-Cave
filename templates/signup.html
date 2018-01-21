@@ -1,68 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<article class="container">
+    <article class="container">
         <div class="page-header">
-          <h2>회원가입 <small> Sign up page</small></h2>
+            <h2>회원가입
+                <small> Sign up page</small>
+            </h2>
         </div>
 
-   <div class="col-md-6 col-md-offset-3">
-          <form role="form" method = "POST">
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="register_id">ID *</label>
-         <div class="input-group">
-        <input type="text" class="form-control" name="register_id" id = "register_id" placeholder="아이디를 입력하세요"required/>
-        <span class="input-group-btn">
-                  <button class="btn btn-success">ID 중복확인<i class="fa fa-mail-forward spaceLeft"></i></button>
-                </span>
-         </div>
-             {% if id_err %}
-        <span>{{ id_err }}</span>
-        {% endif %}
-    </div>
+        <div class="col-md-6 col-md-offset-3">
+            <form role="form" method="POST">
+                {% csrf_token %}
+                {% for input in form %}
+                    <div class="form-group">
+                        <label for="{{ input.id_for_label }}">{{ input.label }} *</label>
+                        {{ input }}
+                    </div>
+{#                    {% if input.errors %}#}
+{#                        <span>{{ input.errors }}</span>#}
+{#                    {% endif %}#}
+                {% endfor %}
+                <br><br>
 
-    <div class="form-group">
-        <label for="register_password">비밀번호 *</label>
-        <input type="password" class="form-control"  name="register_password" id="register_password" placeholder="비밀번호를 입력하세요"required/>
-    </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-info">회원가입<i class="fa fa-check spaceLeft"></i></button>
+                    <a href="{% url 'login' %}">
+                        <button type="button" class="btn btn-warning">가입취소<i class="fa fa-times spaceLeft"></i></button>
+                    </a>
+                </div>
 
-      <div class="form-group">
-
-     <label for="register_email">이메일 *</label>
-          <div class="input-group">
-       <input type="email" class="form-control" name="register_email" id="register_email" placeholder="이메일 인증이 필요합니다."required/> {# 이메일 인증 필요 #}
-       <span class="input-group-btn">
-                  <button class="btn btn-success">이메일 전송<i class="fa fa-mail-forward spaceLeft"></i></button>
-                </span>
-          </div>
-      </div>
-      <div class="form-group">
-          <label for="register_name">이름 *</label><input type="text" class="form-control" name="register_name" id="register_name"  placeholder="이름을 입력해주세요. ex) 서영학"required></p>
-      </div>
-     <div class="form-group">
-          <label for="register_student_num">학번 *</label><input type="text" class="form-control" name="register_student_num" id="register_student_num" placeholder="201200000 식으로 입력해주세요"required></p>
-      </div>
-
-     <div class="form-group">
-          <label for="register_phone">전화번호 * </label><input type="tel" class="form-control" name="register_phone" id="register_phone" placeholder=" - 없이 숫자만 입력해주세요" required></p>
-      </div>
-<div class="form-group">
-    <label for="register_phone">재학 여부 (시간이 지나면 관리자에 의해 변경될 수 있습니다.)</label>
-   <select name="is_attend"  class="form-control" style="width: 200px;">
-        <option value="attend">재학</option>
-        <option value="leave">휴학</option>
-        <option value="graduate">졸업</option>
-    </select>
-    </div>
-
-        <br><br>
-
-     <div class="form-group text-center">
-      <button type="submit" class="btn btn-info">회원가입<i class="fa fa-check spaceLeft"></i></button>
-      <button type="submit" class="btn btn-warning">가입취소<i class="fa fa-times spaceLeft"></i></button>
-    </div>
-
-    </form>
-   </div>
+            </form>
+        </div>
 {% endblock %}
