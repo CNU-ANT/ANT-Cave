@@ -29,46 +29,29 @@ class SignupForm(forms.Form):
         widget=forms.TextInput(
             attrs={'class':'form-control',
                    'placeholder':'아이디를 입력해주세요.',
-<<<<<<< HEAD
-=======
                    'required':True,
->>>>>>> f65c3d9649f76139d9f7dd7aae914715c9da955b
         }),
         required=True,
     )
     password = forms.CharField(
         max_length=20,
-<<<<<<< HEAD
         min_length=8,
-=======
->>>>>>> f65c3d9649f76139d9f7dd7aae914715c9da955b
         label='비밀번호',
         widget=forms.PasswordInput(
             attrs={'class':'form-control',
                    'placeholder':'비밀번호를 입력해주세요.',
-<<<<<<< HEAD
-=======
                    'required': True,
-
->>>>>>> f65c3d9649f76139d9f7dd7aae914715c9da955b
             }),
         required=True,
     )
     password_confirm = forms.CharField(
         max_length=20,
-<<<<<<< HEAD
         min_length=8,
-=======
->>>>>>> f65c3d9649f76139d9f7dd7aae914715c9da955b
         label='비밀번호 확인',
         widget=forms.PasswordInput(
             attrs={'class': 'form-control',
                    'placeholder': '비밀번호를 다시 입력해주세요.',
-<<<<<<< HEAD
-=======
                    'required': True,
-
->>>>>>> f65c3d9649f76139d9f7dd7aae914715c9da955b
                    }),
         required=True,
     )
@@ -77,10 +60,7 @@ class SignupForm(forms.Form):
         widget=forms.EmailInput(
             attrs={'class':'form-control',
                    'placeholder':'이메일을 입력해주세요.',
-<<<<<<< HEAD
-=======
                    'required':True,
->>>>>>> f65c3d9649f76139d9f7dd7aae914715c9da955b
             }),
         required=True,
     )
@@ -90,50 +70,30 @@ class SignupForm(forms.Form):
         widget=forms.TextInput(
             attrs={'class':'form-control',
                    'placeholder':'이름을 입력해주세요. ex) 서영학',
-<<<<<<< HEAD
-=======
                    'required': True,
->>>>>>> f65c3d9649f76139d9f7dd7aae914715c9da955b
             }),
         required=True,
     )
     num = forms.CharField(
-<<<<<<< HEAD
         max_length=9,
         min_length=9,
-=======
-        max_length=10,
->>>>>>> f65c3d9649f76139d9f7dd7aae914715c9da955b
         label='학번',
         widget=forms.TextInput(
             attrs={'class':'form-control',
                    'placeholder':'201800000 식으로 입력해주세요.',
-<<<<<<< HEAD
-=======
-                   'minlength': 9,
-                   'maxlength': 9,
                    'required': True,
->>>>>>> f65c3d9649f76139d9f7dd7aae914715c9da955b
             }),
         required=True,
     )
     phone = forms.CharField(
         max_length=15,
-<<<<<<< HEAD
         min_length=10,
-=======
->>>>>>> f65c3d9649f76139d9f7dd7aae914715c9da955b
         label='전화번호',
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
                 'placeholder':'- 없이 숫자만 입력해주세요.',
-<<<<<<< HEAD
-=======
-                'maxlength':15,
-                'minlength':10,
                 'required': True,
->>>>>>> f65c3d9649f76139d9f7dd7aae914715c9da955b
             }),
         required=True,
     )
@@ -143,10 +103,7 @@ class SignupForm(forms.Form):
             attrs={
                 'class':'form-control',
                 'style':'width:200px;',
-<<<<<<< HEAD
-=======
                 'required': True,
->>>>>>> f65c3d9649f76139d9f7dd7aae914715c9da955b
             },
         ),
         choices=(
@@ -162,7 +119,6 @@ class SignupForm(forms.Form):
     #         'user',
     #     ]
 
-<<<<<<< HEAD
 
 class FindIDForm(forms.Form):
     num = forms.CharField(
@@ -214,5 +170,3 @@ class ChangePasswordForm(forms.Form):
                    }),
         required=True,
     )
-=======
->>>>>>> f65c3d9649f76139d9f7dd7aae914715c9da955b

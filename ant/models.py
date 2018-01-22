@@ -55,11 +55,7 @@ class TeamPost(models.Model):
 class TeamComment(models.Model):
     comment_num = models.AutoField(primary_key=True)
     parent = models.IntegerField()
-<<<<<<< HEAD
     post = models.ForeignKey(TeamPost, on_delete=models.CASCADE)
-=======
-    post = models.ForeignKey(TeamPost, primary_key=True, on_delete=models.CASCADE)
->>>>>>> f65c3d9649f76139d9f7dd7aae914715c9da955b
     text = models.TextField()
 
 
