@@ -31,8 +31,14 @@ urlpatterns = [
     url(r'ant_algo/(?P<pk>\d+)/$', ant_site.ant_algo_detail_page, name='ant_algo_detail'),
     url(r'compete_algo/$', ant_site.competition_algo_page, name='compete_algo'),
     url(r'compete_algo/(?P<pk>\d+)/$', ant_site.competition_algo_detail_page, name='compete_algo_detail'),
-    url(r'find/$', ant_site.find_id_page, name='find_id'),
+
+
+    url(r'find_id/$', ant_site.find_id_page, name='find_id'),
+    url(r'find_password/$', ant_site.find_password_page, name='find_password'),
+    url(r'change_password/$', ant_site.change_password_page, name='change_password'),
+
     url(r'signup/$', ant_site.sign_up_page, name='sign_up'),
     url(r'login/$', ant_site.login_page, name='login'),
+
     url(r'^admin/', admin.site.urls),
 ]

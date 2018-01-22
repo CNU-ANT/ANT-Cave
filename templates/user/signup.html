@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-
     <article class="container">
         <div class="page-header">
             <h2>회원가입
@@ -16,13 +15,10 @@
                         <label for="{{ input.id_for_label }}">{{ input.label }} *</label>
                         {{ input }}
                     </div>
-{#                    {% if input.errors %}#}
-{#                        <span>{{ input.errors }}</span>#}
-{#                    {% endif %}#}
                 {% endfor %}
-                <br><br>
-
+                <br>
                 <div class="form-group text-center">
+                    <div class="err-msg">{{ response }}</div>
                     <button type="submit" class="btn btn-info">회원가입<i class="fa fa-check spaceLeft"></i></button>
                     <a href="{% url 'login' %}">
                         <button type="button" class="btn btn-warning">가입취소<i class="fa fa-times spaceLeft"></i></button>
@@ -31,4 +27,5 @@
 
             </form>
         </div>
+    </article>
 {% endblock %}
