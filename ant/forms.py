@@ -29,7 +29,6 @@ class SignupForm(forms.Form):
         widget=forms.TextInput(
             attrs={'class':'form-control',
                    'placeholder':'아이디를 입력해주세요.',
-                   'required':True,
         }),
         required=True,
     )
@@ -40,7 +39,6 @@ class SignupForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={'class':'form-control',
                    'placeholder':'비밀번호를 입력해주세요.',
-                   'required': True,
             }),
         required=True,
     )
@@ -51,7 +49,6 @@ class SignupForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={'class': 'form-control',
                    'placeholder': '비밀번호를 다시 입력해주세요.',
-                   'required': True,
                    }),
         required=True,
     )
@@ -60,7 +57,6 @@ class SignupForm(forms.Form):
         widget=forms.EmailInput(
             attrs={'class':'form-control',
                    'placeholder':'이메일을 입력해주세요.',
-                   'required':True,
             }),
         required=True,
     )
@@ -70,7 +66,6 @@ class SignupForm(forms.Form):
         widget=forms.TextInput(
             attrs={'class':'form-control',
                    'placeholder':'이름을 입력해주세요. ex) 서영학',
-                   'required': True,
             }),
         required=True,
     )
@@ -81,7 +76,6 @@ class SignupForm(forms.Form):
         widget=forms.TextInput(
             attrs={'class':'form-control',
                    'placeholder':'201800000 식으로 입력해주세요.',
-                   'required': True,
             }),
         required=True,
     )
@@ -93,7 +87,6 @@ class SignupForm(forms.Form):
             attrs={
                 'class': 'form-control',
                 'placeholder':'- 없이 숫자만 입력해주세요.',
-                'required': True,
             }),
         required=True,
     )
@@ -103,7 +96,6 @@ class SignupForm(forms.Form):
             attrs={
                 'class':'form-control',
                 'style':'width:200px;',
-                'required': True,
             },
         ),
         choices=(
