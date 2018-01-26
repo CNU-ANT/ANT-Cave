@@ -1,5 +1,11 @@
 <div class="page-header">
     {% load staticfiles %}
+    {% if user.is_authenticated %}
+        <span>{{ user.get_username }}님 환영합니다.</span>
+        <a href="{% url 'my_page' %}">마이 페이지</a>
+        <a href="{% url 'logout' %}">로그아웃</a>
+        <br>
+    {% endif %}
     <a href="{% url 'main' %}">
         <img src="{% static 'ant.png' %}"/>
     </a>

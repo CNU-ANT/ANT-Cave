@@ -1,0 +1,45 @@
+.group_box {
+    height: 40px;
+    width: 1050px;
+}
+
+.group_box ul {
+
+}
+
+.group_box ul li {
+    float: left;
+    list-style: none;
+    background-color: rgba(51, 51, 51, 0.9);
+    text-align: center;
+    line-height:40px;
+    vertical-align: middle;
+}
+
+.group_box ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    width: 150px;
+    display: block;
+}
+
+.group_box ul li a:hover {
+    text-decoration: none;
+    color: #c7c7c7;
+    background-color: rgba(92, 92, 92, 0.9);
+}
+
+
+.login-input div {
+    display: inline-block;
+}
+
+.login-input div input {
+    width:180px;
+    height:30px;
+}
+
+.login-input button {
+    width:60px;
+    height:60px;
+}
