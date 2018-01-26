@@ -2,6 +2,9 @@
 .idea/
 ANTCave/*.pyc
 ANTCave/__pycache__/
-ant/__pycache__/
-ant/*.pyc
-ant/migrations/
+Profile/__pycache__/
+Profile/*.pyc
+Profile/migrations/
+Board/__pycache__/
+Board/*.pyc
+Board/migrations/

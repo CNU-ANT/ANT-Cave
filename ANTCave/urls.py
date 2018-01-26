@@ -15,30 +15,35 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from ant import views as ant_site
+from Profile import views as profile
+from Board import views as board
 
 urlpatterns = [
-    url(r'^$', ant_site.main_page, name='main'),
-    url(r'pedigree/$', ant_site.pedigree_page, name='pedigree'),
-    url(r'pedigree/(?P<pk>\d+)/$', ant_site.pedigree_page, name='pedigree_detail'),
-    url(r'greetings/$', ant_site.greetings_page, name='greetings'),
-    url(r'greetings/(?P<pk>\d+)/$', ant_site.greetings_detail_page, name='greetings_detail'),
-    url(r'team/$', ant_site.team_page, name='team'),
-    url(r'team/(?P<pk>\d+)/$', ant_site.team_detail_page, name='team_detail'),
-    url(r'share/$', ant_site.share_info_page, name='share'),
-    url(r'share/(?P<pk>\d+)/$', ant_site.share_detail_page, name='share_detail'),
-    url(r'ant_algo/$', ant_site.ant_algo_page, name='ant_algo'),
-    url(r'ant_algo/(?P<pk>\d+)/$', ant_site.ant_algo_detail_page, name='ant_algo_detail'),
-    url(r'compete_algo/$', ant_site.competition_algo_page, name='compete_algo'),
-    url(r'compete_algo/(?P<pk>\d+)/$', ant_site.competition_algo_detail_page, name='compete_algo_detail'),
+    url(r'^$', board.main_page, name='main'),
+    url(r'pedigree/$', board.pedigree_page, name='pedigree'),
+    url(r'pedigree/(?P<pk>\d+)/$', board.pedigree_page, name='pedigree_detail'),
+    url(r'greetings/$', board.greetings_page, name='greetings'),
+    url(r'greetings/(?P<pk>\d+)/$', board.greetings_detail_page, name='greetings_detail'),
+    url(r'team/$', board.team_page, name='team'),
+    url(r'team/(?P<pk>\d+)/$', board.team_detail_page, name='team_detail'),
+    url(r'share/$', board.share_info_page, name='share'),
+    url(r'share/(?P<pk>\d+)/$', board.share_detail_page, name='share_detail'),
+    url(r'ant_algo/$', board.ant_algo_page, name='ant_algo'),
+    url(r'ant_algo/(?P<pk>\d+)/$', board.ant_algo_detail_page, name='ant_algo_detail'),
+    url(r'compete_algo/$', board.competition_algo_page, name='compete_algo'),
+    url(r'compete_algo/(?P<pk>\d+)/$', board.competition_algo_detail_page, name='compete_algo_detail'),
 
 
-    url(r'find_id/$', ant_site.find_id_page, name='find_id'),
-    url(r'find_password/$', ant_site.find_password_page, name='find_password'),
-    url(r'change_password/$', ant_site.change_password_page, name='change_password'),
+    url(r'find_id/$', profile.find_id_page, name='find_id'),
+    url(r'find_password/$', profile.find_password_page, name='find_password'),
+    url(r'change_password/$', profile.change_password_page, name='change_password'),
 
-    url(r'signup/$', ant_site.sign_up_page, name='sign_up'),
-    url(r'login/$', ant_site.login_page, name='login'),
+    url(r'my_page/$', profile.my_page, name='my_page'),
+    url(r'my_page/edit/$', profile.edit_my_page, name='edit_my_page'),
+
+    url(r'signup/$', profile.sign_up_page, name='sign_up'),
+    url(r'login/$', profile.login_page, name='login'),
+    url(r'logout/$', profile.user_logout, name='logout'),
 
     url(r'^admin/', admin.site.urls),
 ]

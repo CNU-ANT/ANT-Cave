@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    <article class="container">
+        <div class="page-header">
+            <h2>마이 페이지
+                <small>My page</small>
+            </h2>
+        </div>
+
+        <div class="col-md-6 col-md-offset-3">
+            <label>아이디 : </label>{{ user.username }}<br>
+            <label>이메일 : </label>{{ user.email }}<br>
+            <label>이름 : </label>{{ user_info.user_name }}<br>
+            <label>학번 : </label>{{ user_info.user_num }}<br>
+            <label>전화번호 : </label>{{ user_info.user_phone }}<br>
+            <label>재학여부 : </label>{{ is_attend }}<br>
+            <label>가입일자 : </label>{{ user_info.signup_date }}<br>
+            <a href="{% url 'edit_my_page' %}">
+                <button type="button" class="btn btn-info">회원정보 수정<i class="fa fa-check spaceLeft"></i></button>
+            </a>
+            <a href="{% url 'main' %}">
+                <button type="button" class="btn btn-warning">취소<i class="fa fa-times spaceLeft"></i></button>
+            </a>
+        </div>
+    </article>
+{% endblock %}
