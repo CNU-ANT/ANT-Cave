@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <article class="container">
+        <div class="page-header">
+            <h3>
+                {{ b_name }}
+                <small> {{ b_name_e }}</small>
+            </h3>
+        </div>
+        <div>
+            <div class="col-md-6 col-md-offset-3">
+                <h4>{{ content.title }} <small>{{ content.writer }}</small></h4>
+
+                <p>{{ content.text }}</p>
+
+                {# TODO : 여기 구성좀 해주세요. #}
+            </div>
+        </div>
+    </article>
+{% endblock %}

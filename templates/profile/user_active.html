@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
-{% block content %}
+{% autoescape off %}
 
+{% block content %}
+    Please click on the link to confirm your registration
+    http://{{ domain }}{% url 'user_active' %}
 {% endblock %}
+
+{% endautoescape %}

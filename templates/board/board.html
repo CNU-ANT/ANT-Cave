@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <article class="container">
+        <div class="page-header">
+            <h3>
+                {{ b_name }}
+                <small> {{ b_name_e }}</small>
+            </h3>
+        </div>
+        <div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>등록일</th>
+                        <th>조회수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    {% for post in object_list %}
+                        <td>{{ post.id }}</td>
+                        <td><a href="{{ detail }}{{ post.id }}">{{ post.title }}</a></td>
+                        <td>{{ post.writer }}</td>
+                        <td>{{ post.create_date }}</td>
+                        <td>{{ post.views }}</td>
+                    {% empty %}
+                        <td colspan="5">No data</td>
+                    {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+            <a href="{{ new }}"><button>새 글</button></a>
+
+        </div>
+    </article>
+{% endblock %}

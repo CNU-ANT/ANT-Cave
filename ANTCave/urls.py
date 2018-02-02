@@ -15,35 +15,86 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.urls import include
 from Profile import views as profile
 from Board import views as board
+from Board import models
 
 urlpatterns = [
     url(r'^$', board.main_page, name='main'),
-    url(r'pedigree/$', board.pedigree_page, name='pedigree'),
-    url(r'pedigree/(?P<pk>\d+)/$', board.pedigree_page, name='pedigree_detail'),
-    url(r'greetings/$', board.greetings_page, name='greetings'),
-    url(r'greetings/(?P<pk>\d+)/$', board.greetings_detail_page, name='greetings_detail'),
-    url(r'team/$', board.team_page, name='team'),
-    url(r'team/(?P<pk>\d+)/$', board.team_detail_page, name='team_detail'),
-    url(r'share/$', board.share_info_page, name='share'),
-    url(r'share/(?P<pk>\d+)/$', board.share_detail_page, name='share_detail'),
-    url(r'ant_algo/$', board.ant_algo_page, name='ant_algo'),
-    url(r'ant_algo/(?P<pk>\d+)/$', board.ant_algo_detail_page, name='ant_algo_detail'),
-    url(r'compete_algo/$', board.competition_algo_page, name='compete_algo'),
-    url(r'compete_algo/(?P<pk>\d+)/$', board.competition_algo_detail_page, name='compete_algo_detail'),
+    url(r'^pedigree/$', board.pedigree_page, name='pedigree'),
+    url(r'^pedigree/', include('Board.urls', namespace='pedigree'),
+        {
+            'b_name': '족보 게시판',
+            'b_name_e': 'Pedigree page',
+            'namespace':'pedigree',
+            'post': models.PedigreePost(),
+            'comment': models.PedigreeComment(),
+            'label': models.PedigreeLabel(),
+        },
+    ),
+    url(r'^greetings/', include('Board.urls', namespace='greetings'),
+        {
+            'b_name': '가입 인사',
+            'b_name_e': 'Greetings page',
+            'namespace':'greetings',
+            'post': models.GreetingsPost(),
+            'comment': models.GreetingsComment(),
+            'label': models.GreetingsLabel(),
+        },
+    ),
+    url(r'^team/', include('Board.urls', namespace='team'),
+        {
+            'b_name': '팀 게시판',
+            'b_name_e': 'Team page',
+            'namespace':'team',
+            'post': models.TeamPost(),
+            'comment': models.TeamComment(),
+            'label': models.TeamLabel(),
+        },
+    ),
+    url(r'^share/', include('Board.urls', namespace='share'),
+        {
+            'b_name': '정보공유 게시판',
+            'b_name_e': 'Share Info page',
+            'namespace':'share',
+            'post': models.ShareInfoPost(),
+            'comment': models.ShareInfoComment(),
+            'label': models.ShareInfoLabel(),
+        },
+    ),
+    url(r'^algorithm/ant/', include('Board.urls', namespace='ant_algo'),
+        {
+            'b_name': 'ANT 문제 게시판',
+            'b_name_e': 'ANT Algorithm page',
+            'namespace':'ant_algo',
+            'post': models.ANTAlgorithmPost(),
+            'comment': models.ANTAlgorithmComment(),
+            'label': models.ANTAlgorithmLabel(),
+        },
+    ),
+    url(r'^algorithm/competition/', include('Board.urls', namespace='compete_algo'),
+        {
+            'b_name': '대회 문제 게시판',
+            'b_name_e': 'Algorithm page',
+            'namespace':'compete_algo',
+            'post': models.CompetitionPost(),
+            'comment': models.CompetitionComment(),
+            'label': models.CompetitionLabel(),
+        },
+    ),
 
+    url(r'^find_id/$', profile.find_id_page, name='find_id'),
+    url(r'^find_password/$', profile.find_password_page, name='find_password'),
+    url(r'^change_password/$', profile.change_password_page, name='change_password'),
 
-    url(r'find_id/$', profile.find_id_page, name='find_id'),
-    url(r'find_password/$', profile.find_password_page, name='find_password'),
-    url(r'change_password/$', profile.change_password_page, name='change_password'),
+    url(r'^my_page/$', profile.my_page, name='my_page'),
+    url(r'^my_page/edit/$', profile.edit_my_page, name='edit_my_page'),
 
-    url(r'my_page/$', profile.my_page, name='my_page'),
-    url(r'my_page/edit/$', profile.edit_my_page, name='edit_my_page'),
-
-    url(r'signup/$', profile.sign_up_page, name='sign_up'),
-    url(r'login/$', profile.login_page, name='login'),
-    url(r'logout/$', profile.user_logout, name='logout'),
+    url(r'^signup/$', profile.sign_up_page, name='sign_up'),
+    url(r'^active/$', profile.user_active_page, name='user_active'),
+    url(r'^login/$', profile.login_page, name='login'),
+    url(r'^logout/$', profile.user_logout, name='logout'),
 
     url(r'^admin/', admin.site.urls),
 ]
