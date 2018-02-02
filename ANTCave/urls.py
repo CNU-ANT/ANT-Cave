@@ -83,7 +83,6 @@ urlpatterns = [
             'label': models.CompetitionLabel(),
         },
     ),
-
     url(r'^find_id/$', profile.find_id_page, name='find_id'),
     url(r'^find_password/$', profile.find_password_page, name='find_password'),
     url(r'^change_password/$', profile.change_password_page, name='change_password'),
@@ -95,6 +94,7 @@ urlpatterns = [
     url(r'^active/$', profile.user_active_page, name='user_active'),
     url(r'^login/$', profile.login_page, name='login'),
     url(r'^logout/$', profile.user_logout, name='logout'),
+
 
     url(r'^admin/', admin.site.urls),
 ]

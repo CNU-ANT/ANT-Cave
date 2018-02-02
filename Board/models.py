@@ -109,3 +109,4 @@ class CompetitionComment(Comment):
 
 class CompetitionLabel(PostLabel):
     post = models.ForeignKey(CompetitionPost, on_delete=models.CASCADE)
+

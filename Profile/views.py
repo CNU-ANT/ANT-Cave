@@ -181,6 +181,7 @@ def login_page(request):
                 # if user_info.level == 0:
                 #     response = '이메일 인증이 되지 않은 계정입니다.'
                 #     return render(request, 'profile/login_page.html', locals())
+
                 login(request, user=login_user)
                 return redirect('/')
             else:
@@ -193,3 +194,4 @@ def login_page(request):
 def user_active_page(request):
     domain = '127.0.0.1/'
     return render(request, 'profile/user_active.html', locals())
+
