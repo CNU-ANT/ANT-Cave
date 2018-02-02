@@ -31,7 +31,8 @@ def edit_my_page(request):
                 user_info.save()
                 return render(request, 'profile/my_page.html', locals())
             except:
-                err = 'ERROR'
+                pass
+        return redirect('/')
     # FIXME : 회원정보 수정 시 db가 update 되지 않아서 빈칸으로 나옴.
     user_info = UserInfo.objects.get(user=request.user)
     form = EditInfoForm(
@@ -177,9 +178,10 @@ def login_page(request):
             login_user = authenticate(username=user_id, password=password)
             if login_user is not None:
                 user_info = UserInfo.objects.get(user=login_user)
-                if user_info.level == 0:
-                    response = '이메일 인증이 되지 않은 계정입니다.'
-                    return render(request, 'profile/login_page.html', locals())
+                # if user_info.level == 0:
+                #     response = '이메일 인증이 되지 않은 계정입니다.'
+                #     return render(request, 'profile/login_page.html', locals())
+
                 login(request, user=login_user)
                 return redirect('/')
             else:
@@ -190,4 +192,6 @@ def login_page(request):
 
 
 def user_active_page(request):
-    pass
+    domain = '127.0.0.1/'
+    return render(request, 'profile/user_active.html', locals())
+

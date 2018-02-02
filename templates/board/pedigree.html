@@ -1,7 +1,61 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div>
-        <h3> 족보 게시판 </h3>
-    </div>
+    <script>
+        let state = 0;
+        document.onkeydown = function (e) {
+            e = e || window.event;
+            switch (e.which || e.keyCode) {
+                case 37:
+                    if (state === 6) {
+                        state += 1;
+                    } else {
+                        state = 0;
+                    }
+                    break;
+                case 38:
+                    if (state === 8) {
+                        state = 0;
+                        var f = document.createElement("form");
+                        f.setAttribute("method", "POST");
+                        f.setAttribute("action", "");
+                        document.body.appendChild(f)
+                        f.submit();
+                        break;
+                    }
+                    if (state < 3) {
+                        state += 1;
+                    } else {
+                        state = 0;
+                    }
+                    break;
+                case 39:
+                    if (state === 7) {
+                        state += 1;
+                    } else {
+                        state = 0;
+                    }
+                    break;
+                case 40:
+                    if (state < 3) {
+                        state = 0;
+                    } else if (state < 6) {
+                        state += 1;
+                    } else
+                    break;
+            }
+        }
+    </script>
+    <article class="container">
+        <div class="page-header">
+            <h3>
+                족보 게시판
+                <small> Pedigree page</small>
+            </h3>
+        </div>
+        <div>
+            RIP <br>
+            Seo young hak: ~2017<br>
+        </div>
+    </article>
 {% endblock %}
