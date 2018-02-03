@@ -32,12 +32,45 @@ Readme 작성법
 		psql --username=postgres
 		``` 
 
-	* Ubuntu 유저
+	* Linux 유저
 		``` bash
 		sudo apt-get install postgresql postgresql-contrib
 		```
 2. Database 생성한다.
-```bash
-CREATE USER khz;
-CREATE DATABASE antcave OWNER khz;
-```
+	1 ) postgres를 실행한다.
+	* Window 유저
+	```bash
+	psql --username=postgres
+	```
+		를 통해 들어가고 이전에 설정한 패스워드를 입력한다.
+
+	* Linux 유저
+	```bash
+	sudo -u postgres psql
+	```
+		위의 명령어를 이용해 psql를 관리자 권한으로 연다.
+		
+	2 ) 데이터베이스를 생성한다.
+	```sql
+	CREATE USER khz;
+	CREATE DATABASE antcave OWNER khz;
+	```
+
+3. DATABASE migrate 한다.
+	```bash
+	python manage.py makemigrations <app_name>
+	python manage.py migrate
+	```
+	app_name은 Board와 Profile을 넣어주면 됩니다.
+	두 app 을 모두 makemigrations 해준 후 migrate 하면 됩니다.
+
+4. DB가 제대로 생성되었는지 확인.
+	```bash
+	python manage.py dbshell
+	\dt
+	```
+	를 통해서 디비가 잘 생성되었는지 확인 할수 있다.
+
++ 주의
+	migrations 폴더를 지우지 마세요.
+	
