@@ -20,17 +20,19 @@
                     </tr>
                 </thead>
                 <tbody>
+                {% for post in object_list %}
                     <tr>
-                    {% for post in object_list %}
                         <td>{{ post.id }}</td>
                         <td><a href="{{ detail }}{{ post.id }}">{{ post.title }}</a></td>
                         <td>{{ post.writer }}</td>
                         <td>{{ post.create_date }}</td>
                         <td>{{ post.views }}</td>
-                    {% empty %}
-                        <td colspan="5">No data</td>
-                    {% endfor %}
                     </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No data</td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
             <a href="{{ new }}"><button>새 글</button></a>
