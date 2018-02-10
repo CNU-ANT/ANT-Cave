@@ -47,9 +47,6 @@ class NewView(FormView):
     template_name = 'board/edit_post.html'
     form_class = PostForm
 
-    def get_success_url(self):
-        return reverse(self.kwargs['namespace']+':board')
-
     def get_context_data(self, **kwargs):
         context = super(NewView, self).get_context_data(**kwargs)
         context['b_name'] = self.kwargs['b_name']
@@ -60,19 +57,16 @@ class NewView(FormView):
         post = self.kwargs['post']
         post.title = form.cleaned_data.get('title')
         post.text = form.cleaned_data.get('text')
-        post.file = form.cleaned_data.get('file') #
+        post.file = form.cleaned_data.get('file')
         post.writer = UserInfo.objects.get(user=self.request.user)
-
         post.save()
+        self.success_url = reverse(self.kwargs['namespace']+':detail', kwargs={'pk':post.id})
         return super(NewView, self).form_valid(form)
 
 
 class EditView(FormView):
     template_name = 'board/edit_post.html'
     form_class = PostForm
-
-    def get_success_url(self):
-        return reverse(self.kwargs['namespace']+':board')
 
     def get_context_data(self, **kwargs):
         context = super(EditView, self).get_context_data(**kwargs)
@@ -84,8 +78,9 @@ class EditView(FormView):
         post = self.kwargs['post']
         post.title = form.cleaned_data.get('title')
         post.text = form.cleaned_data.get('text')
-        post.file = form.cleaned_data.get('file') #
+        post.file = form.cleaned_data.get('file')  #
         post.save()
+        self.success_url = reverse(self.kwargs['namespace'] + ':detail', kwargs={'pk': post.id})
         return super(EditView, self).form_valid(form)
 
 
