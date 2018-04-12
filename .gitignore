@@ -8,3 +8,8 @@ Profile/migrations/
 Board/__pycache__/
 Board/*.pyc
 Board/migrations/
+# Environments
+.venv
+venv/
+venv.bak/
+ant-cave/
