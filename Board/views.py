@@ -8,16 +8,9 @@ from django.views.generic import ListView, FormView, DetailView, CreateView, Upd
 from Board.forms import PostForm, CommentForm
 from ANTCave.settings import LOGIN_URL
 
-
 # Create your views here.
 from Board.models import PedigreePost
 from Profile.models import UserInfo
-
-
-def upload_file(file):
-    with open('some/file/name.txt', 'wb+') as destination:
-        for chunk in file.chunks():
-            destination.write(chunk)
 
 
 @login_required(login_url=LOGIN_URL)
@@ -38,8 +31,8 @@ class IndexView(ListView):
         context['b_name_e'] = self.kwargs['b_name_e']
         context['count'] = self.kwargs['post'].__class__.objects.all().count()
 
-        context['detail'] = reverse(self.kwargs['namespace']+':board')
-        context['new'] = reverse(self.kwargs['namespace']+':new')
+        context['detail'] = reverse(self.kwargs['namespace'] + ':board')
+        context['new'] = reverse(self.kwargs['namespace'] + ':new')
         return context
 
 
@@ -60,7 +53,7 @@ class NewView(FormView):
         post.file = form.cleaned_data.get('file')
         post.writer = UserInfo.objects.get(user=self.request.user)
         post.save()
-        self.success_url = reverse(self.kwargs['namespace']+':detail', kwargs={'pk':post.id})
+        self.success_url = reverse(self.kwargs['namespace'] + ':detail', kwargs={'pk': post.id})
         return super(NewView, self).form_valid(form)
 
 
