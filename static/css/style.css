@@ -22,3 +22,8 @@ By: dave-cheon
 .btn.active span.fa {
 	opacity: 1;
 }
+.navbar-brand>img{
+    height: 100%;
+    padding: 1510px;
+    width :auto;
+}

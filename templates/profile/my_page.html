@@ -15,6 +15,15 @@
             <label>전화번호 : </label>{{ user_info.user_phone }}<br>
             <label>재학여부 : </label>{{ is_attend }}<br>
             <label>가입일자 : </label>{{ user_info.signup_date }}<br>
+
+            <form method="post" action="" enctype="multipart/form-data">
+               {% csrf_token %}
+               <table>
+
+               </table>
+            </form>
+
+
             <a href="{% url 'edit_my_page' %}">
                 <button type="button" class="btn btn-info">회원정보 수정<i class="fa fa-check spaceLeft"></i></button>
             </a>

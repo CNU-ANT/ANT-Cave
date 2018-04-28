@@ -10,7 +10,6 @@ Html, Css 해보기
 - https://www.codecademy.com/learn/learn-html
 - https://www.codecademy.com/learn/learn-css
 
-
 웹 관련 doc 
 - https://www.w3schools.com/
 - https://www.w3schools.com/bootstrap4/default.asp
@@ -22,7 +21,7 @@ Readme 작성법
 
 ## 1) 설치
 ---------
-Python Library 
+### Python Library<br>
 선택) Library 의존성 관리를 위해 가상환경으로 설치 추천 (venv)
 ```
 python -m venv ant-cave
@@ -32,9 +31,9 @@ ant-cave/Scripts/activate
 ```
 pip install -r requirement.txt 
 ```
-[라이브러리리 리스트] (https://github.com/CNU-ANT/ANT-Cave/blob/master/requirements.txt)
+* [라이브러리 목록](https://github.com/CNU-ANT/ANT-Cave/blob/master/requirements.txt)
 ---------
-DB
+### DB
 1. Postgres를 설치한다.
 	* Window 유저
 		* [Postgres 설치(10.3 version)](https://www.enterprisedb.com/products-services-training/pgdownload#windows)

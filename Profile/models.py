@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
-
 # Create your models here.
 class UserInfo(models.Model):
     """
@@ -33,6 +32,10 @@ class UserInfo(models.Model):
     is_attend = models.CharField(max_length=1)
     level = models.PositiveSmallIntegerField(default=0)
     signup_date = models.DateTimeField(default=timezone.now)
+
+    title = models.CharField(max_length=100)
+    photo = models.ImageField(blank=True)
+
 
     def __str__(self):
         return self.user.username
