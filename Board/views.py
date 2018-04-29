@@ -37,7 +37,7 @@ class IndexView(ListView):
         context['b_name'] = self.kwargs['b_name']
         context['b_name_e'] = self.kwargs['b_name_e']
         context['count'] = self.kwargs['post'].__class__.objects.all().count()
-
+        context['namespace'] = self.kwargs['namespace']
         context['detail'] = reverse(self.kwargs['namespace']+':board')
         context['new'] = reverse(self.kwargs['namespace']+':new')
         return context
@@ -51,6 +51,7 @@ class NewView(FormView):
         context = super(NewView, self).get_context_data(**kwargs)
         context['b_name'] = self.kwargs['b_name']
         context['b_name_e'] = self.kwargs['b_name_e']
+        context['namespace'] = reverse(self.kwargs['namespace']+':board')
         return context
 
     def form_valid(self, form):
