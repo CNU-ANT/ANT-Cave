@@ -4,4 +4,4 @@ from django.apps import AppConfig
 
 
 class AntConfig(AppConfig):
-    name = 'ant'
+    name = 'Profile'

@@ -35,35 +35,4 @@ class UserInfo(models.Model):
     signup_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.user_name.encode('utf8')
-
-
-class Label(models.Model):
-    name = models.CharField(max_length=20)
-    color = models.CharField(max_length=10)
-
-
-class TeamPost(models.Model):
-    post_num = models.AutoField(primary_key=True)
-    parent = models.IntegerField()
-    title = models.CharField(max_length=50)
-    text = models.TextField()
-    create_date = models.DateTimeField(default=timezone.now)
-    views = models.IntegerField(default=0)
-
-
-class TeamComment(models.Model):
-    comment_num = models.AutoField(primary_key=True)
-    parent = models.IntegerField()
-    post = models.ForeignKey(TeamPost, on_delete=models.CASCADE)
-    text = models.TextField()
-
-
-class TeamLabel(models.Model):
-    label = models.ForeignKey(Label, on_delete=models.CASCADE)
-    post = models.ForeignKey(TeamPost, on_delete=models.CASCADE)
-
-
-class TeamPostFile(models.Model):
-    post = models.ForeignKey(TeamPost, on_delete=models.CASCADE)
-    file = models.FileField()
+        return self.user.username
