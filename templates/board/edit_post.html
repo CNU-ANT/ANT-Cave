@@ -6,6 +6,7 @@
             <h3>
                 {{ b_name }}
                 <small> {{ b_name_e }}</small>
+{#                {{ namespace }}#}
             </h3>
         </div>
         <div>
@@ -22,7 +23,7 @@
                     <div class="form-group text-center">
                         <div class="err-msg">{{ response }}</div>
                         <button type="submit" class="btn btn-info">작성완료<i class="fa fa-check spaceLeft"></i></button>
-                        <a href="{% url 'pedigree' %}">
+                        <a href="{{ namespace }}">
                             <button type="button" class="btn btn-warning">취소<i class="fa fa-times spaceLeft"></i></button>
                         </a>
                     </div>
