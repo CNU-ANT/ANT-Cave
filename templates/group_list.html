@@ -1,8 +1,5 @@
 {% load staticfiles %}
-<style>
-     li:last-child{
-       clear:right;
-    }
+
 </style>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
@@ -29,6 +26,22 @@
 
         <div class="collapse navbar-collapse" id="nav-toggle">
             <ul class="nav navbar-nav">
+<<<<<<< HEAD
+                <li id="_nav"><a href="{% url 'pedigree' %}">족보 게시판</a></li>
+                <li id="greetings_nav"><a href="{% url 'greetings:board' %}">가입인사</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" id="team-menu" data-toggle="dropdown">팀 게시판&nbsp;<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li id="team_nav"><a href="{% url 'team:board' %}">Team</a></li>
+                    </ul>
+                </li>
+                <li id="share_nav"><a href="{% url 'share:board' %}">정보 공유</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" id="solve-menu" data-toggle="dropdown">문제 게시판&nbsp;<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li id="ant_algo_nav"><a href="{% url 'ant_algo:board' %}">ANT 문제</a></li>
+                        <li id="competition_algo_nav"><a href="{% url 'compete_algo:board' %}">대회 문제</a></li>
+=======
                 <li><a href="{% url 'pedigree' %}">족보 게시판</a></li>
                 <li><a href="{% url 'greetings:board' %}">가입인사</a></li>
                 <li class="dropdown"><a class="dropdown-toggle" id="team-menu" data-toggle="dropdown">팀 게시판&nbsp;<span
@@ -43,6 +56,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="{% url 'ant_algo:board' %}">ANT 문제</a></li>
                         <li><a href="{% url 'compete_algo:board' %}">대회 문제</a></li>
+>>>>>>> 032ce9446d93a158af93ed23f50f8208a05010a9
                     </ul>
                 </li>
             </ul>
@@ -59,3 +73,6 @@
         </div>
     </div>
 </nav>
+<script>
+    document.getElementById("{{ namespace }}_nav").classList.add("active");
+</script>

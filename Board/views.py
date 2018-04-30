@@ -51,7 +51,7 @@ class NewView(FormView):
         context = super(NewView, self).get_context_data(**kwargs)
         context['b_name'] = self.kwargs['b_name']
         context['b_name_e'] = self.kwargs['b_name_e']
-        context['namespace'] = reverse(self.kwargs['namespace']+':board')
+        context['namespace'] = reverse(self.kwargs['namespace'] + ':board')
         return context
 
     def form_valid(self, form):
@@ -73,6 +73,7 @@ class EditView(FormView):
         context = super(EditView, self).get_context_data(**kwargs)
         context['b_name'] = self.kwargs['b_name']
         context['b_name_e'] = self.kwargs['b_name_e']
+        context['namespace'] = self.kwargs['namespace']
         return context
 
     def form_valid(self, form):
@@ -93,7 +94,7 @@ class ContentView(FormView):
         context = super(ContentView, self).get_context_data(**kwargs)
         context['b_name'] = self.kwargs['b_name']
         context['b_name_e'] = self.kwargs['b_name_e']
-
+        context['namespace'] = self.kwargs['namespace']
         context['content'] = self.kwargs['post'].__class__.objects.get(id=self.kwargs['pk'])
         return context
 
