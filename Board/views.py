@@ -6,8 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, FormView, DetailView, CreateView, UpdateView
 
 from Board.forms import PostForm, CommentForm
-from ANTCave.settings import LOGIN_URL
-
+from ANTCave.settings import LOGIN_URL, BASE_URL
 
 # Create your views here.
 from Board.models import PedigreePost
@@ -58,9 +57,12 @@ class NewView(FormView):
         post = self.kwargs['post']
         post.title = form.cleaned_data.get('title')
         post.text = form.cleaned_data.get('text')
-        post.file = form.cleaned_data.get('file')
         post.writer = UserInfo.objects.get(user=self.request.user)
         post.save()
+
+        for file in self.request.FILES.getlist('file'):
+            self.kwargs['file'].__class__.objects.create(post=post, file=file)
+
         self.success_url = reverse(self.kwargs['namespace']+':detail', kwargs={'pk':post.id})
         return super(NewView, self).form_valid(form)
 
@@ -77,11 +79,22 @@ class EditView(FormView):
         return context
 
     def form_valid(self, form):
-        post = self.kwargs['post']
+        try:
+            post = self.kwargs['post'].__class__.objects.get()
+            post_file = self.kwargs['file'].__class__.objects.get(post=post)
+        except:
+            post = self.kwargs['post']
+            post_file = self.kwargs['file']
+
         post.title = form.cleaned_data.get('title')
         post.text = form.cleaned_data.get('text')
-        post.file = form.cleaned_data.get('file')  #
         post.save()
+
+        # TODO : Edit 은 New 와 처리할 것이 다름.
+
+        post_file.file = form.cleaned_data.get('file')
+        post_file.save()
+
         self.success_url = reverse(self.kwargs['namespace'] + ':detail', kwargs={'pk': post.id})
         return super(EditView, self).form_valid(form)
 
@@ -96,6 +109,10 @@ class ContentView(FormView):
         context['b_name_e'] = self.kwargs['b_name_e']
         context['namespace'] = self.kwargs['namespace']
         context['content'] = self.kwargs['post'].__class__.objects.get(id=self.kwargs['pk'])
+        try:
+            context['files'] = self.kwargs['file'].__class__.objects.filter(post=context['content'])
+        except:
+            pass
         return context
 
     def form_valid(self, form):

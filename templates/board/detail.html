@@ -21,6 +21,12 @@
             <p style="height:300px">{{ content.text }}</p>
 
         </div>
+        {% for file in files %}
+        <div class="">
+            <a href="{{ file.url }}" download>{{ file.filename }}</a><br>
+        </div>
+        {% endfor %}
+
         <div class="form-group text-center">
             <div class="err-msg">{{ response }}</div>
             <button type="submit" class="btn btn-info">작성완료<i class="fa fa-check spaceLeft"></i></button>
