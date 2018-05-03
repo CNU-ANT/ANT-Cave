@@ -14,13 +14,6 @@ from Board.models import PedigreePost
 from Profile.models import UserInfo
 
 
-def upload_file(file):
-    with open('some/file/name.txt', 'wb+') as destination:
-        for chunk in file.chunks():
-            destination.write(chunk)
-
-
-@login_required(login_url=LOGIN_URL)
 def main_page(request):
     return render(request, 'main.html')
 
