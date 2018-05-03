@@ -26,14 +26,8 @@
             <a href="{{ file.url }}" download>{{ file.filename }}</a><br>
         </div>
         {% endfor %}
-
-        <div class="form-group text-center">
-            <div class="err-msg">{{ response }}</div>
-            <button type="submit" class="btn btn-info">작성완료<i class="fa fa-check spaceLeft"></i></button>
-            <a href="{{ namespace }}">
-                <button type="button" class="btn btn-warning">취소<i class="fa fa-times spaceLeft"></i></button>
-            </a>
-        </div>
+      
+        <a href="{{ edit }}"><button>수정</button></a>
     </div>
 </article>
 {% endblock %}

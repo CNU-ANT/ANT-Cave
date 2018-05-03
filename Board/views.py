@@ -13,13 +13,6 @@ from Board.models import PedigreePost
 from Profile.models import UserInfo
 
 
-def upload_file(file):
-    with open('some/file/name.txt', 'wb+') as destination:
-        for chunk in file.chunks():
-            destination.write(chunk)
-
-
-@login_required(login_url=LOGIN_URL)
 def main_page(request):
     return render(request, 'main.html')
 
@@ -76,6 +69,7 @@ class EditView(FormView):
         context['b_name'] = self.kwargs['b_name']
         context['b_name_e'] = self.kwargs['b_name_e']
         context['namespace'] = self.kwargs['namespace']
+
         return context
 
     def form_valid(self, form):
@@ -108,6 +102,7 @@ class ContentView(FormView):
         context['b_name'] = self.kwargs['b_name']
         context['b_name_e'] = self.kwargs['b_name_e']
         context['namespace'] = self.kwargs['namespace']
+        context['edit'] = reverse(self.kwargs['namespace'] + ':edit')
         context['content'] = self.kwargs['post'].__class__.objects.get(id=self.kwargs['pk'])
         try:
             context['files'] = self.kwargs['file'].__class__.objects.filter(post=context['content'])
