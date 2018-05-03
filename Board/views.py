@@ -67,6 +67,7 @@ class EditView(FormView):
         context['b_name'] = self.kwargs['b_name']
         context['b_name_e'] = self.kwargs['b_name_e']
         context['namespace'] = self.kwargs['namespace']
+
         return context
 
     def form_valid(self, form):
@@ -88,6 +89,7 @@ class ContentView(FormView):
         context['b_name'] = self.kwargs['b_name']
         context['b_name_e'] = self.kwargs['b_name_e']
         context['namespace'] = self.kwargs['namespace']
+        context['edit'] = reverse(self.kwargs['namespace'] + ':edit')
         context['content'] = self.kwargs['post'].__class__.objects.get(id=self.kwargs['pk'])
         return context
 
