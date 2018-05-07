@@ -7,8 +7,8 @@ from Board.views import IndexView, ContentView, EditView, NewView
 
 app_name = 'board'
 urlpatterns = [
-    url('^$', login_required(IndexView.as_view(), login_url=LOGIN_URL), name='board',),
-    url('^(?P<pk>\d+)/$', login_required(ContentView.as_view(), login_url=LOGIN_URL), name='detail'),
+    url('^$', IndexView.as_view(), name='board',),
+    url('^(?P<pk>\d+)/$', ContentView.as_view(), name='detail'),
     url('^edit/$', csrf_exempt(login_required(EditView.as_view(), login_url=LOGIN_URL)), name='edit'),
     url('^new/$', csrf_exempt(login_required(NewView.as_view(), login_url=LOGIN_URL)), name='new'),
 ]

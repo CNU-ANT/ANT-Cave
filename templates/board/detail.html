@@ -28,6 +28,14 @@
                 <button type="button" class="btn btn-warning">취소<i class="fa fa-times spaceLeft"></i></button>
             </a>
         </div>
+        {% for file in files %}
+        <div class="">
+            <a href="{{ file.url }}" download>{{ file.filename }}</a><br>
+
+        </div>
+        {% endfor %}
+      
+        <a href="{{ edit }}"><button>수정</button></a>
     </div>
 </article>
 {% endblock %}
