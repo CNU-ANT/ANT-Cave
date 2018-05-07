@@ -13,3 +13,5 @@ Board/migrations/
 venv/
 venv.bak/
 ant-cave/
+# File
+media/
