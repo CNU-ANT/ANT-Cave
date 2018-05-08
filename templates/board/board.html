@@ -23,18 +23,41 @@
                 {% for post in object_list %}
                     <tr>
                         <td>{{ post.id }}</td>
-                        <td><a href="{{ detail }}{{ post.id }}">{{ post.title }}</a></td>
+                        <td><a href="{{ board }}{{ post.id }}">{{ post.title }}</a></td>
                         <td>{{ post.writer }}</td>
                         <td>{{ post.create_date }}</td>
                         <td>{{ post.views }}</td>
                     </tr>
+                    
                 {% empty %}
                     <tr>
-                        <td colspan="5">No data</td>
+                        <td colspan="5">작성된 글이 없습니다.</td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
+
+        {% if is_paginated %}
+            <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a> </li>
+            {% else %}
+                <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+            {% for index in paginator.page_range %}
+                {% if page_obj.number == index %}
+                    <li class="active"><span>{{ index }}<span class="sr-only">(current)</span></span></li>
+                {% else %}
+                    <li><a href="?page={{ index }}">{{ index }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a> </li>
+            {% else %}
+                <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+            </ul>
+        {% endif %}
             <a href="{{ new }}"><button>새 글</button></a>
         </div>
     </article>

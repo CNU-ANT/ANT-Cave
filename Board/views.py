@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.utils.decorators import method_decorator
@@ -22,15 +23,18 @@ class IndexView(ListView):
     paginate_by = 15
 
     def get_queryset(self):
-        return self.kwargs['post'].__class__.objects.order_by('-id')[:15]
+        return self.kwargs['post'].__class__.objects.order_by('-id')[:]
+
+    def get_paginator(self, queryset, per_page, orphans=0,
+                      allow_empty_first_page=True, **kwargs):
+        return Paginator(queryset, self.paginate_by)
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['b_name'] = self.kwargs['b_name']
         context['b_name_e'] = self.kwargs['b_name_e']
-        context['count'] = self.kwargs['post'].__class__.objects.all().count()
         context['namespace'] = self.kwargs['namespace']
-        context['detail'] = reverse(self.kwargs['namespace']+':board')
+        context['board'] = reverse(self.kwargs['namespace']+':board')
         context['new'] = reverse(self.kwargs['namespace']+':new')
         return context
 
