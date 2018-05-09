@@ -51,11 +51,11 @@ class NewView(FormView):
         return context
 
     def form_valid(self, form):
-        post = self.kwargs['post']
-        post.title = form.cleaned_data.get('title')
-        post.text = form.cleaned_data.get('text')
-        post.writer = UserInfo.objects.get(user=self.request.user)
-        post.save()
+        post = self.kwargs['post'].__class__.objects.create(
+            title=form.cleaned_data.get('title'),
+            text=form.cleaned_data.get('text'),
+            writer=UserInfo.objects.get(user=self.request.user),
+        )
 
         for file in self.request.FILES.getlist('file'):
             self.kwargs['file'].__class__.objects.create(post=post, file=file)
