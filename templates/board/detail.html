@@ -22,6 +22,13 @@
             <p style="height:300px">{{ content.text }}</p>
 
         </div>
+        <ul class="list-group">
+        {% for file in files %}
+            <li class="list-group-item"><a href="{{ file.url }}" download><i class="fa fa-file"></i> {{ file.filename }}</a></li>
+        {% endfor %}
+        </ul>
+
+        <a href="{{ edit }}"><button>수정</button></a>
     </div>
 
     {% for file in files %}
