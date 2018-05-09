@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <script>
+<script>
         let state = 0;
         document.onkeydown = function (e) {
             e = e || window.event;
@@ -45,20 +45,91 @@
                     break;
             }
         }
-    </script>
+
+
+
+</script>
 <form method='post' action='' enctype="multipart/form-data">
 
 </form>
-    <article class="container">
-        <div class="page-header">
-            <h3>
-                족보 게시판
-                <small> Pedigree page</small>
-            </h3>
+<article class="container">
+    <div class="page-header">
+        <h3>
+            족보 게시판
+            <small> Pedigree page</small>
+        </h3>
+    </div>
+     <div>
+        <span class="text-primary" style="font-size:20px;">2대 회장</span> <span>정윤수 </span>
+        <div style="margin-left:12px">
+            <br/>
+            <p class="text-primary" style="font-weight:bold"> 2018 </p>
+            <div style="margin-left:12px">
+
+
+            </div>
+
         </div>
-        <div>
-            RIP <br>
-            Seo young hak: ~2017<br>
+     </div>
+    <hr>
+    <div>
+        <span class="text-primary" style="font-size:20px;">1대 회장</span> <span>서영학 : inspire12</span>
+        <div style="margin-left:12px">
+            <br/>
+            <p class="text-primary" style="font-weight:bold"> 2017 </p>
+            <ul style="margin-left:12px">
+                <li>생각하는 프로그래밍 대회 개최 (2017.09) </li>
+                <li>Facebook HackerCup, Round 2 진출 : 임동현 2017-01-06 ~ 01-28 </li>
+                <li>Google CodeJam <br/>
+                <div style="margin-left:12px">Round 1 진출 : 서영학 등 9명<br>
+                    Round 2 진출 : 임동현
+                    2017-04-07 ~ 08-11
+                </div>
+
+                </li>
+                <li>삼성 SCPC
+                    본선 진출 : 임동현
+                    2017-06-30 ~ 08-17
+                </li>
+                <li>
+                    SK C&C
+                    Code Genius 2017
+                    본선 진출 : 김민호
+                    2017-06-17 ~ 06-25
+                <li>카카오 Code Festival
+                    본선 진출 : 임동현
+                    2017-08-05 ~ 09-09
+                </li>
+                <li>ACM-ICPC
+                    본선진출 : 김민호, 조윤재
+                    2017-09-23 / 11-05
+                </li>
+                <li>
+                    ANT-CAVE 동아리 홈페이지 프로젝트
+                </li>
+                <li>
+                    <a href="https://github.com/CNU-ANT/">CNU-ANT Github 개설</a>
+                </li>
+            </ul>
+            <p class="text-primary" style="font-weight:bold"> 2016 </p>
+            <ul style="margin-left:12px">
+                <li>ACM-ICPC Daejeon Regional 진출 (2016 ANT1) </li>
+                <li>Coder's High (2016 개미굴)</li>
+                <li><a href = https://www.acmicpc.net/group/471>백준 알고리즘 스터디 개설</a></li>
+                <li>동아리 세미나 진행</li>
+            </ul>
+            <hr>
+            <p class="text-primary" style="font-weight:bold"> 홈페이지를 만든 사람들(ANT-CAVE Contributor) </p>
+            <ul style="margin-left:12px">
+                <li>김혁진 </li>
+                <li>서영학 </li>
+                <li>정윤수</li>
+                <li>정진욱</li>
+                <li>서유경</li>
+                <li>김주성</li>
+            </ul>
         </div>
-    </article>
+
+    </div>
+</article>
 {% endblock %}
