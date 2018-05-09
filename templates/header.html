@@ -1,20 +1,5 @@
 {% load staticfiles %}
-    {% if user.is_authenticated %}
 <div class="page-header">
-    <nav class="navbar navbar-fixed-top">
-        <ul class="container">
-            <ol class="breadcrumb">
-                <li><span>{{ user.get_username }}님 환영합니다.</span></li>
-                <li><a href="{% url 'my_page' %}">마이 페이지</a></li>
-                <li><a href="{% url 'logout' %}">로그아웃</a>
-        </ol>
-        </ul>
-    </nav>
-    {% endif %}
-    <a href="{% url 'main' %}">
-        <img src="{% static 'ant.png' %}"/>
-    </a>
-    <h1> ANT Site </h1>
-</div>
 
+</div>
 {% include 'group_list.html' %}

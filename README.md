@@ -19,6 +19,9 @@ Readme 작성법
 - https://gist.github.com/ihoneymon/652be052a0727ad59601 
 - (미리보기) https://stackedit.io/editor
 
+깃 사용방법 
+- 
+
 ## 1) 설치
 ---------
 ### Python Library<br>
@@ -85,4 +88,15 @@ pip install -r requirement.txt
 
 + 주의
 	migrations 폴더를 지우지 마세요.
+	
+## 2) 실행 
+
+Console 로 실행 
+	ANT-Cave 폴더에서 python manage.py runserver 
+	127.0.0.1:8000 실행
+	만약 8000 port가 사용중이거나 다른 포트를 쓰고 싶으면 python manage.py runserver 포트번호
+	127.0.0.1:<port>
+Script 로 저장 (디버깅 가능)
+	pycharm 상단 메뉴에서 Run -> edit configuration 선택
+	+ 버튼 누르고 python 추가 , script 에 manage.py 위치 넣고 script parameter에 runserver 입력 후 실행
 	

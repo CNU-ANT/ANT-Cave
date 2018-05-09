@@ -1,6 +1,13 @@
+import os
 from django.db import models
 from django.utils import timezone
+
+from ANTCave.settings import MEDIA_ROOT, MEDIA_URL, BASE_URL
 from Profile.models import UserInfo
+
+
+def user_directory_path(instance, filename):
+    return os.path.join(MEDIA_ROOT, 'file/{0}/{1}/{2}'.format(instance.__class__.__name__,instance.post.id, filename))
 
 
 # Create your models here.
@@ -16,15 +23,29 @@ class Post(models.Model):
     text = models.TextField()
     create_date = models.DateTimeField(default=timezone.now)
     views = models.IntegerField(default=0)
-    file = models.FileField()
+
+    class Meta:
+        abstract = True
+
+
+class File(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    file = models.FileField(upload_to=user_directory_path)
+
+    def url(self):
+        return BASE_URL+MEDIA_URL+'file/{0}/{1}/{2}'.format(self.__class__.__name__,self.post.id, self.filename())
+
+    def filename(self):
+        return os.path.basename(self.file.name)
 
     class Meta:
         abstract = True
 
 
 class Comment(models.Model):
-    parent = models.IntegerField()
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    writer = models.ForeignKey(UserInfo, default='', on_delete=models.SET_DEFAULT)
     text = models.TextField()
 
     class Meta:
@@ -40,10 +61,15 @@ class PostLabel(models.Model):
 
 
 class TeamPost(Post):
-    file = models.FileField(upload_to='static/file/team')
+    pass
+
+
+class TeamFile(File):
+    post = models.ForeignKey(TeamPost, on_delete=models.CASCADE)
 
 
 class TeamComment(Comment):
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     post = models.ForeignKey(TeamPost, on_delete=models.CASCADE)
 
 
@@ -52,10 +78,15 @@ class TeamLabel(PostLabel):
 
 
 class PedigreePost(Post):
-    file = models.FileField(upload_to='static/file/pedigree')
+    pass
+
+
+class PedigreeFile(File):
+    post = models.ForeignKey(PedigreePost, on_delete=models.CASCADE)
 
 
 class PedigreeComment(Comment):
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     post = models.ForeignKey(PedigreePost, on_delete=models.CASCADE)
 
 
@@ -64,10 +95,15 @@ class PedigreeLabel(PostLabel):
 
 
 class GreetingsPost(Post):
-    file = models.FileField(upload_to='static/file/greetings')
+    pass
+
+
+class GreetingsFile(File):
+    post = models.ForeignKey(GreetingsPost, on_delete=models.CASCADE)
 
 
 class GreetingsComment(Comment):
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     post = models.ForeignKey(GreetingsPost, on_delete=models.CASCADE)
 
 
@@ -76,10 +112,15 @@ class GreetingsLabel(PostLabel):
 
 
 class ShareInfoPost(Post):
-    file = models.FileField(upload_to='static/file/share_info')
+    pass
+
+
+class ShareInfoFile(File):
+    post = models.ForeignKey(ShareInfoPost, on_delete=models.CASCADE)
 
 
 class ShareInfoComment(Comment):
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     post = models.ForeignKey(ShareInfoPost, on_delete=models.CASCADE)
 
 
@@ -88,10 +129,15 @@ class ShareInfoLabel(PostLabel):
 
 
 class ANTAlgorithmPost(Post):
-    file = models.FileField(upload_to='static/file/ant_algorithm')
+    pass
+
+
+class ANTAlgorithmFile(File):
+    post = models.ForeignKey(ANTAlgorithmPost, on_delete=models.CASCADE)
 
 
 class ANTAlgorithmComment(Comment):
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     post = models.ForeignKey(ANTAlgorithmPost, on_delete=models.CASCADE)
 
 
@@ -100,10 +146,15 @@ class ANTAlgorithmLabel(PostLabel):
 
 
 class CompetitionPost(Post):
-    file = models.FileField(upload_to='static/file/competition_algorithm')
+    pass
+
+
+class CompetitionFile(File):
+    post = models.ForeignKey(CompetitionPost, on_delete=models.CASCADE)
 
 
 class CompetitionComment(Comment):
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     post = models.ForeignKey(CompetitionPost, on_delete=models.CASCADE)
 
 
