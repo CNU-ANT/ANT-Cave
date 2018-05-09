@@ -43,8 +43,9 @@ class File(models.Model):
 
 
 class Comment(models.Model):
-    parent = models.IntegerField()
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    writer = models.ForeignKey(UserInfo, default='', on_delete=models.SET_DEFAULT)
     text = models.TextField()
 
     class Meta:
@@ -68,6 +69,7 @@ class TeamFile(File):
 
 
 class TeamComment(Comment):
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     post = models.ForeignKey(TeamPost, on_delete=models.CASCADE)
 
 
@@ -84,6 +86,7 @@ class PedigreeFile(File):
 
 
 class PedigreeComment(Comment):
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     post = models.ForeignKey(PedigreePost, on_delete=models.CASCADE)
 
 
@@ -100,6 +103,7 @@ class GreetingsFile(File):
 
 
 class GreetingsComment(Comment):
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     post = models.ForeignKey(GreetingsPost, on_delete=models.CASCADE)
 
 
@@ -116,6 +120,7 @@ class ShareInfoFile(File):
 
 
 class ShareInfoComment(Comment):
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     post = models.ForeignKey(ShareInfoPost, on_delete=models.CASCADE)
 
 
@@ -132,6 +137,7 @@ class ANTAlgorithmFile(File):
 
 
 class ANTAlgorithmComment(Comment):
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     post = models.ForeignKey(ANTAlgorithmPost, on_delete=models.CASCADE)
 
 
@@ -148,6 +154,7 @@ class CompetitionFile(File):
 
 
 class CompetitionComment(Comment):
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     post = models.ForeignKey(CompetitionPost, on_delete=models.CASCADE)
 
 
