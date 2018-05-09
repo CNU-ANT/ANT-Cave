@@ -51,11 +51,11 @@ class NewView(FormView):
         return context
 
     def form_valid(self, form):
-        post = self.kwargs['post']
-        post.title = form.cleaned_data.get('title')
-        post.text = form.cleaned_data.get('text')
-        post.writer = UserInfo.objects.get(user=self.request.user)
-        post.save()
+        post = self.kwargs['post'].__class__.objects.create(
+            title=form.cleaned_data.get('title'),
+            text=form.cleaned_data.get('text'),
+            writer=UserInfo.objects.get(user=self.request.user),
+        )
 
         for file in self.request.FILES.getlist('file'):
             self.kwargs['file'].__class__.objects.create(post=post, file=file)
@@ -108,12 +108,24 @@ class ContentView(FormView):
         context['edit'] = reverse(self.kwargs['namespace'] + ':edit')
         context['content'] = self.kwargs['post'].__class__.objects.get(id=self.kwargs['pk'])
         try:
+            context['comments'] = self.kwargs['comment'].__class__.objects.filter(post=context['content'])
+        except:
+            pass
+        try:
             context['files'] = self.kwargs['file'].__class__.objects.filter(post=context['content'])
         except:
             pass
         return context
 
+    def get_success_url(self):
+        return reverse(self.kwargs['namespace']+':detail', kwargs={'pk': self.kwargs['pk']})
+
     def form_valid(self, form):
+        self.kwargs['comment'].__class__.objects.create(
+            post=self.kwargs['post'].__class__.objects.get(id=self.kwargs['pk']),
+            writer=UserInfo.objects.get(user=self.request.user),
+            text=form.cleaned_data.get('text')
+        )
         return super(ContentView, self).form_valid(form)
 
 

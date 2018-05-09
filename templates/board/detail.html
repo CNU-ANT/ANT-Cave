@@ -3,31 +3,40 @@
 {% block content %}
 <article class="container">
     <div class="page-header">
+
         <h3>
             {{ b_name }}
             <small> {{ b_name_e }}</small>
         </h3>
     </div>
-    <div class="col-md-8 col-md-offset-1 ">
-        <h3>{{ content.title }}
+    <div class="col-md-8 col-md-offset-1">
 
-        </h3>
-        <h4>
-            <small>작성자 : {{ content.writer }}</small>
-            <small class="pull-right "> {{ content.create_date}}</small>
-        </h4>
-        <hr>
-        <div class="">
-            <p style="height:300px">{{ content.text }}</p>
+        <div class="list-group-item">
+            <div style="margin-top:10px;">
+                <h3 style="display:inline;">{{ content.title }} </h3>
+                <a href="{{ edit }}" class="pull-right">수정</a>
+            </div>
+            <h4>
+                <small>작성자 : {{ content.writer }}</small>
+                <small class="pull-right "> {{ content.create_date}}</small>
+            </h4>
+            <hr>
+            <div class="">
+                <p style="height:300px">{{ content.text }}</p>
+
+            </div>
+            <ul class="list-group">
+                {% for file in files %}
+                <li class="list-group-item"><a href="{{ file.url }}" download><i class="fa fa-file"></i>
+                    {{file.filename }}</a></li>
+                {% endfor %}
+            </ul>
 
         </div>
-        {% for file in files %}
-        <div class="">
-            <a href="{{ file.url }}" download>{{ file.filename }}</a><br>
-        </div>
-        {% endfor %}
 
-        <a href="{{ edit }}"><button>수정</button></a>
+
+        {% include 'board/comment.html' %}
+
     </div>
 </article>
 {% endblock %}
