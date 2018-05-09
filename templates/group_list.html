@@ -4,8 +4,9 @@
     <div class="container-fluid">
         <div class="navbar-header">
 
-                {% if user.is_authenticated %}
-                <div class="navbar-brand">
+            {% if user.is_authenticated %}
+            <div class="navbar-brand">
+
                 <a href="/" style="text-decoration:none">Welcome </a>
                 <span class="dropdown-toggle" data-toggle="dropdown" href="#">
                 {{ user.get_username }} <span class="caret"></span>
@@ -14,9 +15,9 @@
                     <li><a href="{% url 'my_page' %}"><i class="glyphicon glyphicon-user"></i> My page</a></li>
                     <li><a href="{% url 'logout' %}"><i class="glyphicon glyphicon-log-in"></i> Logout</a></li>
                 </ul>
-                </div>
-                {%else%} <a class="navbar-brand" href="{% url 'main' %}">ANT</a>
-                {%endif%}
+            </div>
+            {%else%} <a class="navbar-brand" href="{% url 'main' %}">ANT</a>
+            {%endif%}
 
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-toggle">
                 <span class="icon-bar"></span>
@@ -59,4 +60,5 @@
 </nav>
 <script>
     document.getElementById("{{ namespace }}_nav").classList.add("active");
+
 </script>
