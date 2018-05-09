@@ -8,7 +8,8 @@
             <small> {{ b_name_e }}</small>
         </h3>
     </div>
-    <div class="col-md-8 col-md-offset-1 ">
+    <div class="col-md-8 col-md-offset-1">
+    <div class="list-group-item">
         <h3>{{ content.title }}
 
         </h3>
@@ -29,5 +30,17 @@
 
         <a href="{{ edit }}"><button>수정</button></a>
     </div>
+
+    {% for file in files %}
+    <div class="">
+        <a href="{{ file.url }}" download>{{ file.filename }}</a><br>
+    </div>
+    {% endfor %}
+
+    {% include 'board/comment.html' %}
+   <a href="{{ edit }}"><button style="margin-top: 3em;" class="btn">수정</button></a>
+
+    </div>
+
 </article>
 {% endblock %}

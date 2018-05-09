@@ -1,0 +1,23 @@
+
+<ul class="list-group">
+{% for comment in comments %}
+<div style="margin-top: 1em;">
+<li class="list-group-item">
+    <span class="badge">{{ comment.writer }}</span><br>
+    <p>{{ comment.text }}</p></li>
+</div>
+{% endfor %}
+</ul>
+
+<div style="margin-top: 1em;">
+    <form role="form" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_table }}
+            <button style="margin-top: 1em;float:right;" class="btn" type="submit">댓글 달기</button>
+        </div>
+    </form>
+{#    {% with template_name='board/comment.html'  %}#}
+{#    {% include template_name %}#}
+{#    {% endwith %}#}
+</div>

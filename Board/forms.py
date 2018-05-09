@@ -57,11 +57,12 @@ class LabelForm(forms.Form):
 
 class CommentForm(forms.Form):
     text = forms.CharField(
-        label='내용',
+        label='댓글',
         widget=forms.Textarea(
             attrs={
                 'class': 'form-control',
                 'placeholder': '내용 입력',
+                'style': 'resize:none; width: 100%; height: 5em;',
             }
         ),
         required=True,
