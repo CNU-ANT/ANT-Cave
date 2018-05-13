@@ -67,8 +67,8 @@ pip install -r requirement.txt
 		
 	2 ) 데이터베이스를 생성한다.
 	```sql
-	CREATE USER khz;
-	CREATE DATABASE antcave OWNER khz;
+	ALTER USER postgres WITH ENCRYPTED PASSWORD 'su6407';
+	CREATE DATABASE antcave OWNER postgres;
 	```
 
 3. DATABASE migrate 한다.
