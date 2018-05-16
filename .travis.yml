@@ -1,0 +1,16 @@
+language: python
+python:
+  - "3.6"
+services:
+  - postgresql
+install:
+  - pip install -r requirements.txt
+before_script:
+  - psql -c "CREATE DATABASE antcave OWNER postgres;" -U postgres
+  - psql -c "ALTER USER postgres WITH ENCRYPTED PASSWORD 'su6407';" -U postgres
+  - python manage.py makemigrations Board
+  - python manage.py makemigrations Profile
+  - python manage.py migrate
+script:
+  - python manage.py test Board
+  - python manage.py test Profile
