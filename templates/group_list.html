@@ -28,15 +28,20 @@
 
         <div class="collapse navbar-collapse" id="nav-toggle">
             <ul class="nav navbar-nav">
-                <li id="_nav"><a href="{% url 'pedigree' %}">족보 게시판</a></li>
+                <li id="notice_nav"><a href="{% url 'notice:board' %}">공지사항</a></li>
+                <li id="pedigree_nav"><a href="{% url 'pedigree' %}">족보 게시판</a></li>
                 <li id="greetings_nav"><a href="{% url 'greetings:board' %}">가입인사</a></li>
                 <li class="dropdown"><a class="dropdown-toggle" id="team-menu" data-toggle="dropdown">팀 게시판&nbsp;<span
                         class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li id="team_nav"><a href="{% url 'team:board' %}">Team</a></li>
+                        <li id="algo_team_nav"><a href="{% url 'team:board' %}">Algorithm</a></li>
+                         <li id="ant_cave_team_nav"><a href="{% url 'team:board' %}">ANT-CAVE</a></li>
+                         <li id="edu_team_nav"><a href="{% url 'team:board' %}">신입생 교육</a></li>
+                         <li id="today_problem_nav"><a href="{% url 'team:board' %}">오늘의 문제 </a></li>
                     </ul>
                 </li>
                 <li id="share_nav"><a href="{% url 'share:board' %}">정보 공유</a></li>
+
                 <li class="dropdown"><a class="dropdown-toggle" id="solve-menu" data-toggle="dropdown">문제 게시판&nbsp;<span
                         class="caret"></span></a>
                     <ul class="dropdown-menu">

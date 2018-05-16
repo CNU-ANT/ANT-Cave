@@ -37,6 +37,17 @@ urlpatterns = [
             'label': models.PedigreeLabel(),
         },
     ),
+    url(r'^notice/', include('Board.urls', namespace='notice'),
+        {
+            'b_name': '공지 게시판',
+            'b_name_e': 'Notice page',
+            'namespace':'notice',
+            'post': models.NoticePost(),
+            'file': models.NoticeFile(),
+            'comment': models.NoticeComment(),
+            'label': models.NoticeLabel(),
+        },
+    ),
     url(r'^greetings/', include('Board.urls', namespace='greetings'),
         {
             'b_name': '가입 인사',
@@ -70,6 +81,7 @@ urlpatterns = [
             'label': models.ShareInfoLabel(),
         },
     ),
+
     url(r'^algorithm/ant/', include('Board.urls', namespace='ant_algo'),
         {
             'b_name': 'ANT 문제 게시판',
