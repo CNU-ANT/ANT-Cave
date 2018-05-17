@@ -60,7 +60,13 @@ class PostLabel(models.Model):
         abstract = True
 
 
+class Team(models.Model):
+    name = models.CharField(max_length=10)
+    description = models.TextField()
+
+
 class TeamPost(Post):
+    team = models.ForeignKey(Team, default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
     pass
 
 
@@ -109,6 +115,24 @@ class GreetingsComment(Comment):
 
 class GreetingsLabel(PostLabel):
     post = models.ForeignKey(GreetingsPost, on_delete=models.CASCADE)
+
+
+# 공지사항 게시판
+class NoticePost(Post):
+    pass
+
+
+class NoticeFile(File):
+    post = models.ForeignKey(NoticePost, on_delete=models.CASCADE)
+
+
+class NoticeComment(Comment):
+    parent = models.ForeignKey('self', default=None, on_delete=models.SET_DEFAULT, null=True, blank=True)
+    post = models.ForeignKey(NoticePost, on_delete=models.CASCADE)
+
+
+class NoticeLabel(PostLabel):
+    post = models.ForeignKey(NoticePost, on_delete=models.CASCADE)
 
 
 class ShareInfoPost(Post):
